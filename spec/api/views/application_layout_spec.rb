@@ -1,4 +1,6 @@
-require "spec_helper"
+# frozen_string_literal: true
+
+require 'spec_helper'
 
 describe Api::Views::ApplicationLayout do
   let(:layout)   { Api::Views::ApplicationLayout.new(template, {}) }
