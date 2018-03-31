@@ -6,8 +6,12 @@ module Api
       class Index
         include Api::Action
 
+        expose :message, :title
+
         def call(_params)
-          status 200, { message: 'Hello from Hanami!' }.to_json
+          @message = 'Hello from the backend!'
+          @title = 'Greetings'
+          self.status = 200
         end
       end
     end
