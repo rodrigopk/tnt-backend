@@ -4,3 +4,4 @@
 # See: http://hanamirb.org/guides/routing/overview/
 #
 get '/hello', to: 'hello#index'
+get '/users', to: 'users#index'
