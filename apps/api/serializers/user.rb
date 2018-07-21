@@ -7,6 +7,10 @@ module Api
         serialize(user: map_user(user))
       end
 
+      def serialize_users(users)
+        serialize(users: map_users(users))
+      end
+
       private
 
       def serialize(data)
@@ -19,6 +23,10 @@ module Api
           name: user.name,
           email: user.email,
         }
+      end
+
+      def map_users(users)
+        users.map { |user| map_user(user) }
       end
     end
   end

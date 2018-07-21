@@ -25,14 +25,6 @@ describe Api::Views::Users::Index do
   end
 
   def serialized_response
-    {
-      users: [
-        {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-        },
-      ],
-    }.to_json
+    Api::Serializers::User.new.serialize_users([user])
   end
 end
