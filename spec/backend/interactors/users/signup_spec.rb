@@ -38,6 +38,15 @@ describe Interactors::Users::Signup do
       result = interactor.call(user_params)
       expect(result.user).to eq(user)
     end
+
+    context 'email already exists' do
+      it 'raises an error' do
+        allow(password_service).to encrypt_user_password
+        allow(repository).to raise_unique_constraint_violation_error
+
+        expect { interactor.call(user_params) }.to raise_email_taken_error
+      end
+    end
   end
 
   private
@@ -58,6 +67,16 @@ describe Interactors::Users::Signup do
 
   def encrypt_user_password
     receive(:create).and_return(encrypted_password)
+  end
+
+  def raise_unique_constraint_violation_error
+    receive(:create)
+      .with(user_params_with_password_digest)
+      .and_raise(Hanami::Model::UniqueConstraintViolationError)
+  end
+
+  def raise_email_taken_error
+    raise_error(Interactors::Users::Signup::EmailAlreadyTakenError)
   end
 
   def user_params_with_password_digest

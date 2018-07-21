@@ -5,6 +5,8 @@ module Interactors
     class Signup
       include Hanami::Interactor
 
+      class EmailAlreadyTakenError < StandardError; end
+
       expose :user
 
       def initialize(dependencies = {})
@@ -21,6 +23,8 @@ module Interactors
         @user = @user_repository.create(
           user_params_with_password_digest(params),
         )
+      rescue Hanami::Model::UniqueConstraintViolationError
+        raise(EmailAlreadyTakenError)
       end
 
       private

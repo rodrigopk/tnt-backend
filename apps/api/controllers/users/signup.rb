@@ -26,6 +26,8 @@ module Api::Controllers::Users
       halt 422 unless params.valid?
 
       @user = @interactor.call(params[:user]).user
+    rescue Interactors::Users::Signup::EmailAlreadyTakenError
+      halt 409
     end
   end
 end

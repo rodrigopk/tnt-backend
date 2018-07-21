@@ -37,6 +37,15 @@ describe Api::Controllers::Users::Signup do
         action.call(params)
         expect(action.exposures[:user]).to eq(user)
       end
+
+      context 'email already taken' do
+        it 'returns 409' do
+          allow(interactor).to raise_email_already_taken_error
+
+          response = action.call(params)
+          expect(response[0]).to eq 409
+        end
+      end
     end
   end
 
@@ -46,6 +55,12 @@ describe Api::Controllers::Users::Signup do
     receive(:call)
       .with(params[:user])
       .and_return(Hanami::Interactor::Result.new(user: user))
+  end
+
+  def raise_email_already_taken_error
+    receive(:call)
+      .with(params[:user])
+      .and_raise(Interactors::Users::Signup::EmailAlreadyTakenError)
   end
 
   def build_params
