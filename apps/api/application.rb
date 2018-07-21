@@ -23,6 +23,7 @@ module Api
       load_paths << [
         'controllers',
         'views',
+        'serializers',
       ]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
