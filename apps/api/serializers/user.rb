@@ -3,7 +3,7 @@
 module Api
   module Serializers
     class User
-      def call(user)
+      def serialize_user(user)
         serialize(user: map_user(user))
       end
 

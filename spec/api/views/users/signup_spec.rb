@@ -25,6 +25,6 @@ describe Api::Views::Users::Signup do
   end
 
   def serialized_response
-    Api::Serializers::User.new.call(user)
+    Api::Serializers::User.new.serialize_user(user)
   end
 end

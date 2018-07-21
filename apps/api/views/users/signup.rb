@@ -5,7 +5,7 @@ module Api::Views::Users
     include Api::View
 
     def render
-      raw Api::Serializers::User.new.call(user)
+      raw Api::Serializers::User.new.serialize_user(user)
     end
   end
 end

@@ -8,9 +8,9 @@ describe Api::Serializers::User do
   let(:user) { build_user }
   let(:serialized_user) { build_serialized_user }
 
-  describe '#call' do
+  describe '#serialize_user' do
     it 'returns the serialized user' do
-      expect(serializer.call(user)).to eq(serialized_user)
+      expect(serializer.serialize_user(user)).to eq(serialized_user)
     end
   end
 
