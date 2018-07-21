@@ -5,13 +5,7 @@ module Api::Views::Users
     include Api::View
 
     def render
-      raw JSON.generate(
-        user: {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-        },
-      )
+      raw Api::Serializers::User.new.call(user)
     end
   end
 end

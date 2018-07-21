@@ -25,12 +25,6 @@ describe Api::Views::Users::Signup do
   end
 
   def serialized_response
-    {
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-      },
-    }.to_json
+    Api::Serializers::User.new.call(user)
   end
 end
