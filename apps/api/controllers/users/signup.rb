@@ -25,7 +25,7 @@ module Api::Controllers::Users
     def call(params)
       halt 422 unless params.valid?
 
-      @user = @interactor.call(params[:user])
+      @user = @interactor.call(params[:user]).user
     end
   end
 end

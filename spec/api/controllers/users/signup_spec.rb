@@ -43,7 +43,9 @@ describe Api::Controllers::Users::Signup do
   private
 
   def create_new_user
-    receive(:call).with(params[:user]).and_return(user)
+    receive(:call)
+      .with(params[:user])
+      .and_return(Hanami::Interactor::Result.new(user: user))
   end
 
   def build_params
