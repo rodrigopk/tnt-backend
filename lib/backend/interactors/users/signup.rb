@@ -15,7 +15,7 @@ module Interactors
         end
 
         @password_service = dependencies.fetch(:password_service) do
-          BCrypt::Password
+          Containers::Password.resolve(:password_service)
         end
       end
 
