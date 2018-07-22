@@ -14,4 +14,9 @@ describe Containers::Users do
     interactor = container.resolve(:users_index_interactor)
     expect(interactor).to eq(Interactors::Users::Index)
   end
+
+  it 'registers the user signup interactor' do
+    interactor = container.resolve(:users_signup_interactor)
+    expect(interactor).to eq(Interactors::Users::Signup)
+  end
 end

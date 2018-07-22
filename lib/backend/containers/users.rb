@@ -11,5 +11,9 @@ module Containers
     register :users_index_interactor do
       Interactors::Users::Index
     end
+
+    register :users_signup_interactor do
+      Interactors::Users::Signup
+    end
   end
 end
