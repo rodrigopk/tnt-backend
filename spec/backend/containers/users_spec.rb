@@ -9,4 +9,9 @@ describe Containers::Users do
     repository = container.resolve(:user_repository)
     expect(repository).to eq(UserRepository)
   end
+
+  it 'registers the user index interactor' do
+    interactor = container.resolve(:users_index_interactor)
+    expect(interactor).to eq(Interactors::Users::Index)
+  end
 end

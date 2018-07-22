@@ -7,5 +7,9 @@ module Containers
     register :user_repository do
       UserRepository
     end
+
+    register :users_index_interactor do
+      Interactors::Users::Index
+    end
   end
 end
