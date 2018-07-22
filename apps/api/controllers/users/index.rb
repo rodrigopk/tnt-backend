@@ -8,7 +8,7 @@ module Api::Controllers::Users
 
     def initialize(dependencies = {})
       @interactor = dependencies.fetch(:interactor) do
-        Interactors::Users::Index.new
+        Containers::Users.resolve(:users_index_interactor).new
       end
     end
 

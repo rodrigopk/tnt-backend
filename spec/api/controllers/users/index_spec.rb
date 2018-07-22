@@ -10,6 +10,10 @@ describe Api::Controllers::Users::Index do
   let(:users) { [instance_double(User)] }
   let(:interactor_response) { Hanami::Interactor::Result.new(users: users) }
 
+  it 'injects dependencies' do
+    described_class.new
+  end
+
   describe '#call' do
     it 'fetchs the users' do
       expect(interactor).to fetch_all_users
@@ -28,7 +32,7 @@ describe Api::Controllers::Users::Index do
       allow(interactor).to fetch_all_users
 
       action.call(params)
-      
+
       retrieved_users = action.exposures[:users]
       expect(retrieved_users).to eq(users)
     end

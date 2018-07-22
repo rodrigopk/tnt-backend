@@ -11,11 +11,11 @@ module Interactors
 
       def initialize(dependencies = {})
         @user_repository = dependencies.fetch(:repository) do
-          UserRepository.new
+          Containers::Users.resolve(:user_repository).new
         end
 
         @password_service = dependencies.fetch(:password_service) do
-          BCrypt::Password
+          Containers::Password.resolve(:password_service)
         end
       end
 
