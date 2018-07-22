@@ -16,6 +16,10 @@ describe Interactors::Users::Signup do
   let(:encrypted_password) { 'super-secure-encrypted-password-hash' }
   let(:user) { instance_double(User) }
 
+  it 'injects dependencies' do
+    described_class.new
+  end
+
   describe '#call' do
     it 'creates an user' do
       allow(password_service).to encrypt_user_password
