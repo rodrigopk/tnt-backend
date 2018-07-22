@@ -9,6 +9,10 @@ describe Api::Controllers::Users::Signup do
   let(:params) { build_params }
   let(:user) { instance_double(User) }
 
+  it 'injects dependencies' do
+    described_class.new
+  end
+
   describe '#call' do
     context 'missing required parameters' do
       it 'returns 422 status' do

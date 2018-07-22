@@ -18,7 +18,7 @@ module Api::Controllers::Users
 
     def initialize(dependencies = {})
       @interactor = dependencies.fetch(:interactor) do
-        Interactors::Users::Signup.new
+        Containers::Users.resolve(:users_signup_interactor).new
       end
     end
 
