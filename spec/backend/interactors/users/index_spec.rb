@@ -6,6 +6,10 @@ describe Interactors::Users::Index do
 
   let(:users) { [instance_double(User)] }
 
+  it 'injects dependencies' do
+    described_class.new
+  end
+
   describe '#call' do
     it 'fetchs all users' do
       expect(repository).to fetch_all_users
