@@ -2,11 +2,11 @@
 
 require_relative '../../../spec_helper'
 
-describe Api::Views::Users::Index do
+describe Api::Views::Users::Signup do
   let(:user) { build_user }
-  let(:exposures) { Hash[users: [user]] }
+  let(:exposures) { Hash[user: user] }
 
-  let(:view)      { described_class.new(nil, exposures) }
+  let(:view)      { Api::Views::Users::Signup.new(nil, exposures) }
   let(:rendered)  { view.render }
 
   it 'exposes #foo' do
@@ -25,6 +25,6 @@ describe Api::Views::Users::Index do
   end
 
   def serialized_response
-    Api::Serializers::User.new.serialize_users([user])
+    Api::Serializers::User.new.serialize_user(user)
   end
 end

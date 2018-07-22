@@ -5,3 +5,4 @@
 #
 get '/hello', to: 'hello#index'
 get '/users', to: 'users#index'
+post '/users/signup', to: 'users#signup'
